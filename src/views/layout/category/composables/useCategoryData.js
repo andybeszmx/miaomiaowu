@@ -12,7 +12,7 @@ export const useCategoryData = () => {
     categoryData.value=res.result
   }
   CategoryGet()
-  //组件不复用，刷新数据
+  //路由只有参数变化的时候，会复用组件导致无法调用函数获取最新数据，以下函数可以解决此问题
   onBeforeRouteUpdate((to)=>{
     CategoryGet(to.params.id)
 })
