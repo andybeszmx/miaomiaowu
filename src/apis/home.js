@@ -17,3 +17,8 @@ export const newGoodsGetSerive = () => {
 export const hotBrandSerive = () => {
   return request.get('/home/hot')
 }
+
+//产品
+export const goodsGetSerive = () => {
+  return request.get('/home/goods')
+}
