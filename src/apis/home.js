@@ -8,3 +8,12 @@ export const bannerGetSerive = (distributionSite) => {
     }
   })
 }
+//新鲜好物获取
+export const newGoodsGetSerive = () => {
+  return request.get('/home/new')
+}
+
+//人气推荐
+export const hotBrandSerive = () => {
+  return request.get('/home/hot')
+}
