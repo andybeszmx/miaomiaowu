@@ -3,6 +3,7 @@ import layout from '@/views/layout/index.vue'
 import login from '@/views/login/index.vue'
 import home from '@/views/layout/home/index.vue'
 import category from '@/views/layout/category/index.vue'
+import subcategory from '@/views/layout/subcategory/index.vue'
 
 
 
@@ -20,6 +21,10 @@ const router = createRouter({
         {
           path:'category/:id',
           component:category
+        },
+        {
+          path:'category/sub/:id',
+          component:subcategory
         }
       ]
     },

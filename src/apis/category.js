@@ -8,4 +8,19 @@ export const  firstCategoryGet = (id) => {
     }
   })
 }
+ 
+//二级分类及其数据
+export const secondCategoryGet = id => {
+  return request.get('/category/sub/filter',{
+    params:{
+      id
+    }
+  })
+}
 
+//二级分类的物品数据
+export const secondCategoryGoods = data => {
+  return request.post('/category/goods/temporary',{
+   data
+  })
+}
