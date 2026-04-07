@@ -3,7 +3,6 @@ import { detailGet } from '@/apis/detail'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import HotDetail from './component/HotDetail.vue'
-import ImageView from '@/components/ImageView.vue'
 
 const goods = ref({})
 const route = useRoute()
@@ -14,6 +13,12 @@ const goodsGet = async () => {
 }
 goodsGet()
 
+//sku数据被操作时
+// const skuObj = ref({})
+const skuChange = (sku) => {
+  console.log(sku)
+  // skuObj.value = sku
+}
 </script>
 
 <template>
@@ -41,7 +46,7 @@ goodsGet()
           <div class="goods-info">
             <div class="media">
               <!-- 图片预览区 -->
-              <ImageView :imageList="goods.mainPictures" ></ImageView>
+              <XtxImgView :imageList="goods.mainPictures" ></XtxImgView>
               <!-- 统计数量 -->
               <ul class="goods-sales">
                 <li>
@@ -90,7 +95,7 @@ goodsGet()
                 </dl>
               </div>
               <!-- sku组件 -->
-
+              <XtxSku :goods="goods" @change="skuChange"></XtxSku>
               <!-- 数据组件 -->
               <el-input-number v-model="count" @change="handleChange" />
               <!-- 按钮组件 -->
