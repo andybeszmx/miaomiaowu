@@ -3,7 +3,7 @@ import { detailGet } from '@/apis/detail'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import HotDetail from './component/HotDetail.vue'
-
+import ImageView from '@/components/ImageView.vue'
 
 const goods = ref({})
 const route = useRoute()
@@ -41,7 +41,7 @@ goodsGet()
           <div class="goods-info">
             <div class="media">
               <!-- 图片预览区 -->
-
+              <ImageView :imageList="goods.mainPictures" ></ImageView>
               <!-- 统计数量 -->
               <ul class="goods-sales">
                 <li>
