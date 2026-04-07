@@ -5,6 +5,7 @@ import home from '@/views/layout/home/index.vue'
 import category from '@/views/layout/category/index.vue'
 import subcategory from '@/views/layout/subcategory/index.vue'
 import detail from '@/views/layout/detail/index.vue'
+import cartlist from '@/views/layout/cartlist/index.vue'
 
 
 const router = createRouter({
@@ -29,6 +30,10 @@ const router = createRouter({
         {
           path:'detail/:id',
           component:detail
+        },
+        {
+          path: 'cartlist',
+          component: cartlist
         }
       ]
     },

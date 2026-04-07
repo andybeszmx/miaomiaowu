@@ -3,6 +3,7 @@ import { detailGet } from '@/apis/detail'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import HotDetail from './component/HotDetail.vue'
+import { useCartStore } from '@/stores/cart'
 
 const goods = ref({})
 const route = useRoute()
@@ -14,10 +15,37 @@ const goodsGet = async () => {
 goodsGet()
 
 //sku数据被操作时
-// const skuObj = ref({})
+const skuObj = ref({})
 const skuChange = (sku) => {
-  console.log(sku)
-  // skuObj.value = sku
+  // console.log(sku)
+  skuObj.value = sku
+}
+
+const count = ref(1)
+const handleChange = () => {
+  if (skuObj.value.skuId) {
+    count.value++
+  }
+}
+
+const cartStore = useCartStore()
+const addCart = () => {
+  if (skuObj.value.skuId) {
+    cartStore.getCartList(
+      {
+      id: goods.value.id,
+      name: goods.value.name,
+      picture: goods.value.mainPictures[0],
+      price: goods.value.price,
+      count: count.value,
+      skuId: skuObj.value.skuId,
+      attrsText: skuObj.value.specsText,
+      selected: true
+    }
+    )
+  } else{
+    ElMessage.warning('请填写完整商品信息')
+  }
 }
 </script>
 
