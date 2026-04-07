@@ -1,27 +1,27 @@
 import { defineStore } from "pinia"
 import { computed, ref } from 'vue'
-// import { useUserStore } from "./user"
-// import { findNewCartListAPI,delCartAPI, insertCartAPI } from "@/apis/cart"
+import { useUserStore } from "./user"
+import { findNewCartListAPI,delCartAPI, insertCartAPI } from "@/apis/cart"
 
 export const useCartStore = defineStore('cart', () => {
-  // const userStore = useUserStore()
+  const userStore = useUserStore()
   //是否登录
-  // const isLogin = computed(() => userStore.userInfo.token)
+  const isLogin = computed(() => userStore.userInfo.token)
   //本地购物车
   const cartList = ref([])
   //获取最新购物车列表
-  // const getAPIList = async ()=>{
-  //   const res=await findNewCartListAPI()
-  //   cartList.value=res.result
-  // }
+  const getAPIList = async ()=>{
+    const res=await findNewCartListAPI()
+    cartList.value=res.result
+  }
   //添加商品
   const getCartList = async (goods) => {
-    const { skuId } = goods
-    // if (isLogin.value) {
-    //   //接口
-    //   await insertCartAPI({ skuId, count })
-    //   getAPIList()
-    // } else {
+    const { skuId,count } = goods
+    if (isLogin.value) {
+      //接口
+      await insertCartAPI({ skuId, count })
+      getAPIList()
+    } else {
       //本地存储
       const item = cartList.value.find((item => item.skuId === skuId))
       if (item) {
@@ -29,20 +29,20 @@ export const useCartStore = defineStore('cart', () => {
       } else {
         cartList.value.push(goods)
       }
-    // }
+    }
 
 
   }
   //删除商品
   const delCart = async (skuId) => {
-    // if(isLogin.value){
-    //   await delCartAPI([skuId])
-    //   getAPIList()
-    // } else {
-      //findIndex,splice
+    if(isLogin.value){
+      await delCartAPI([skuId])
+      getAPIList()
+    } else {
+      // findIndex,splice
     const index = cartList.value.findIndex((item) => {return skuId === item.skuId })
     cartList.value.splice(index, 1)
-    // }
+    }
     
   }
   // 清空购物车
@@ -83,7 +83,7 @@ export const useCartStore = defineStore('cart', () => {
     selectedCount,
     selectedPrice,
     clearCart,
-    // getAPIList
+    getAPIList
   }
 }, {
   persist: true
