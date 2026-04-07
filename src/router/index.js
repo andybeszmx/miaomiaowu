@@ -4,7 +4,7 @@ import login from '@/views/login/index.vue'
 import home from '@/views/layout/home/index.vue'
 import category from '@/views/layout/category/index.vue'
 import subcategory from '@/views/layout/subcategory/index.vue'
-
+import detail from '@/views/layout/detail/index.vue'
 
 
 const router = createRouter({
@@ -25,6 +25,10 @@ const router = createRouter({
         {
           path:'category/sub/:id',
           component:subcategory
+        },
+        {
+          path:'detail/:id',
+          component:detail
         }
       ]
     },
