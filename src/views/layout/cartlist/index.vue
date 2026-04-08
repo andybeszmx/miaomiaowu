@@ -71,7 +71,7 @@ const changeSingle = (flag) => {
               <td colspan="6">
                 <div class="cart-none">
                   <el-empty description="购物车列表为空">
-                    <el-button type="primary">随便逛逛</el-button>
+                    <el-button tag="a" href="/" type="primary">随便逛逛</el-button>
                   </el-empty>
                 </div>
               </td>
