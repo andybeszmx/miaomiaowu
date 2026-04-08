@@ -11,7 +11,7 @@ import pay from "@/views/layout/pay/index.vue"
 import PayBack from '@/views/layout/pay/PayBack.vue'
 import member from '@/views/layout/member/index.vue'
 import UserInfo from '@/views/layout/member/components/UserInfo.vue'
-
+import order from '@/views/layout/member/components/UserOrder.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -55,11 +55,14 @@ const router = createRouter({
         {
           path:'member',
           component:member,          
-          redirect:'member/user',
           children:[
             {
-              path:'user',
+              path:'',
               component:UserInfo,
+            },
+            {
+              path:'order',
+              component:order,
             }
           ]
         }
