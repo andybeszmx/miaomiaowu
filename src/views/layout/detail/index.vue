@@ -22,11 +22,6 @@ const skuChange = (sku) => {
 }
 
 const count = ref(1)
-const handleChange = () => {
-  if (skuObj.value.skuId) {
-    count.value++
-  }
-}
 
 const cartStore = useCartStore()
 const addCart = () => {
@@ -125,7 +120,7 @@ const addCart = () => {
               <!-- sku组件 -->
               <XtxSku :goods="goods" @change="skuChange"></XtxSku>
               <!-- 数据组件 -->
-              <el-input-number v-model="count" @change="handleChange" />
+              <el-input-number :min="1" v-model="count" />
               <!-- 按钮组件 -->
               <div @click="addCart">
                 <el-button size="large" class="btn">
