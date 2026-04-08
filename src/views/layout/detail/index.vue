@@ -69,7 +69,7 @@ const addCart = () => {
           <div class="goods-info">
             <div class="media">
               <!-- 图片预览区 -->
-              <XtxImgView :imageList="goods.mainPictures" ></XtxImgView>
+              <ImgView :imageList="goods.mainPictures" ></ImgView>
               <!-- 统计数量 -->
               <ul class="goods-sales">
                 <li>
@@ -118,7 +118,7 @@ const addCart = () => {
                 </dl>
               </div>
               <!-- sku组件 -->
-              <XtxSku :goods="goods" @change="skuChange"></XtxSku>
+              <MmwSku :goods="goods" @change="skuChange"></MmwSku>
               <!-- 数据组件 -->
               <el-input-number :min="1" v-model="count" />
               <!-- 按钮组件 -->
