@@ -6,3 +6,12 @@ export const userLogin = ({account,password}) => {
       password
     })
 }
+
+//猜你喜欢
+export const getLikeList =({limit = 4})=>{
+  return request.get('/goods/relevant',{
+    params:{
+      limit
+    }
+  })
+}
