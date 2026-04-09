@@ -1,40 +1,40 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import layout from '@/views/layout/index.vue'
-import login from '@/views/login/index.vue'
-import home from '@/views/layout/home/index.vue'
-import category from '@/views/layout/category/index.vue'
-import subcategory from '@/views/layout/subcategory/index.vue'
-import detail from '@/views/layout/detail/index.vue'
-import cartlist from '@/views/layout/cartlist/index.vue'
-import checkout from '@/views/layout/checkout/index.vue'
-import pay from "@/views/layout/pay/index.vue"
-import PayBack from '@/views/layout/pay/PayBack.vue'
-import member from '@/views/layout/member/index.vue'
-import UserInfo from '@/views/layout/member/components/UserInfo.vue'
-import order from '@/views/layout/member/components/UserOrder.vue'
+const layout = () => import('@/views/layout/index.vue')
+const login = () => import('@/views/login/index.vue')
+const home = () => import('@/views/layout/home/index.vue')
+const category = () => import('@/views/layout/category/index.vue')
+const subcategory = () => import('@/views/layout/subcategory/index.vue')
+const detail = () => import('@/views/layout/detail/index.vue')
+const cartlist = () => import('@/views/layout/cartlist/index.vue')
+const checkout = () => import('@/views/layout/checkout/index.vue')
+const pay = () => import("@/views/layout/pay/index.vue")
+const PayBack = () => import('@/views/layout/pay/PayBack.vue')
+const member = () => import('@/views/layout/member/index.vue')
+const UserInfo = () => import('@/views/layout/member/components/UserInfo.vue')
+const order = () => import('@/views/layout/member/components/UserOrder.vue')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path:'/',
-      component:layout,
-      children:[
+      path: '/',
+      component: layout,
+      children: [
         {
-          path:'',
-          component:home
+          path: '',
+          component: home
         },
         {
-          path:'category/:id',
-          component:category
+          path: 'category/:id',
+          component: category
         },
         {
-          path:'category/sub/:id',
-          component:subcategory
+          path: 'category/sub/:id',
+          component: subcategory
         },
         {
-          path:'detail/:id',
-          component:detail
+          path: 'detail/:id',
+          component: detail
         },
         {
           path: 'cartlist',
@@ -49,34 +49,34 @@ const router = createRouter({
           component: pay
         },
         {
-          path:'PayBack',
-          component:PayBack
+          path: 'PayBack',
+          component: PayBack
         },
         {
-          path:'member',
-          component:member,          
-          children:[
+          path: 'member',
+          component: member,
+          children: [
             {
-              path:'',
-              component:UserInfo,
+              path: '',
+              component: UserInfo,
             },
             {
-              path:'order',
-              component:order,
+              path: 'order',
+              component: order,
             }
           ]
         }
       ]
     },
     {
-      path:'/login',
-      component:login
+      path: '/login',
+      component: login
     }
 
   ],
   scrollBehavior() {
     return {
-      top:0
+      top: 0
     }
   }
 })
